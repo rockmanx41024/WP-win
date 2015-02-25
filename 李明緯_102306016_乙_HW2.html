@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <title>homework 2 </title>
+    <style>
+        button{
+            background-color:#99CCFF;
+            color:#000099;
+            font-size: 15px;
+            border:8 solid black;
+            border-radius:10px;
+            width: 100px;
+            height:40px;
+        }
+        input{
+            border: 5 solid blue;
+            border-radius:3px;
+            background-color: #FFFFCC;
+        }
+        body{
+            text-align: center;
+            background-color: #CCFF99;
+        }
+        .instruction{
+            font-size: 18px;
+            height:80px;
+            width:550px;
+            border:#6495ED;
+            background-color:#99CCFF;
+            border-radius:5px;
+            margin:auto;
+            font-family:微軟正黑體;
+            color:#000099;
+            text-align: left;
+        }
+        .monitor{
+            font-size: 17px;
+            height:150px;
+            width:300px;
+            border:#6495ED;
+            background-color:#99CCFF;
+            border-radius:5px;
+            margin:auto;
+            font-family:新細明體;
+            color:#000099;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        confirm("歡迎使用學測落點分析！")
+        var name = prompt("請告訴我您的名字!")
+        confirm(name+","+"請依序填入您的學測五科成績，系統將會計算您的最佳落點!")
+        
+        function refresh(){
+            var a = document.getElementById("fieldA").value;
+            var b = document.getElementById("fieldB").innerHTML;
+                if(b ==""){
+                b=a;
+                }else{ b = b +"," + a};
+        
+            var c = Number(document.getElementById("fieldC").innerHTML) + Number(a);
+
+            document.getElementById("fieldA").value ="";
+            document.getElementById("fieldB").innerHTML = b.toString();
+            document.getElementById("fieldC").innerHTML = c.toString();
+        }
+        function erase(first){
+            txt = first.srcText.value;
+            document.getElementById("fieldB").innerHTML = txt; 
+            document.getElementById("fieldC").innerHTML = txt;
+        }
+        function calculate(){
+            var score = document.getElementById("fieldC").innerHTML;
+                if (score >= 70) {
+                confirm(name+","+"您的最佳落點：政大資管");
+                }
+                else{
+                confirm("請拼指考,加油!")
+                }  
+        }
+    </script>
+    
+    <h1 style="font-family:標楷體;">學測落點分析</h1>
+    
+    <form>
+        <input id="fieldA" name="srcText"><br>
+        <button type="button" onclick="refresh()" style="font-family:標楷體;font-size:20px">確定</button><br>
+        <button type="button" onclick="erase(this.form)"><strong>Click Me to Erase!</strong></button>
+    </form>    
+    
+    <div class = "monitor">
+        <p><strong>國 英 數 自 社</strong></p>
+        <p id="fieldB"></p>
+        <p><strong>您的總級分</strong></p>
+        <p id="fieldC"></p>
+    </div>
+    
+    <button type="button" onclick="calculate()" style="font-family:標楷體;font-size:18px"><strong>計算落點</strong></button>
+    
+    <div class = "instruction">
+        <ol>
+            <strong>
+            <li>請依照"國、英、數、自、社"的順序填入您的學測五科成績</li>
+            <li>請點選"計算落點",系統將自動幫您計算落點！</li>
+            <li>如果要重新輸入請點"<em>Click Me to Erase!</em>"</li>
+            </strong>
+        </ol>    
+    </div>
+    
+    <br><br><br><br><br>
+    <p style="text-align:right">power by 政大資管</p>
+</body>
+</html>
